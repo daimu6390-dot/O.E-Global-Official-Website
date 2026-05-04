@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O.E全球唯一官方网站</title>
+  <style>
+    :root{
+      --bg:#f3f1ec;
+      --card:#ffffff;
+      --text:#171717;
+      --muted:#666;
+      --line:rgba(0,0,0,.1);
+      --dark:#111;
+      --accent:#f59e0b;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    button,input,textarea{font:inherit}
+    button{cursor:pointer}
+    .topbar{
+      position:sticky;top:0;z-index:40;
+      background:rgba(17,17,17,.97);
+      color:#fff;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+    }
+    .wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+    .topbar .inner{
+      display:flex;align-items:center;gap:16px;min-height:64px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;background:none;border:0;color:#fff;padding:0}
+    .brand-mark{
+      width:40px;height:40px;border-radius:12px;
+      display:grid;place-items:center;
+      border:1px solid rgba(245,158,11,.35);
+      background:rgba(245,158,11,.1);
+      color:var(--accent);
+      flex:0 0 auto;
+    }
+    .brand-title{font-size:14px;font-weight:700;line-height:1.1;text-align:left}
+    .brand-sub{font-size:11px;letter-spacing:.28em;color:rgba(255,255,255,.42);margin-top:3px}
+    nav.desktop{margin-left:auto;display:none;gap:30px;align-items:center}
+    nav.desktop button{
+      background:none;border:0;color:rgba(255,255,255,.92);
+      font-size:14px;font-weight:600;
+      padding:8px 0;
+    }
+    nav.desktop button:hover{color:#fbd38d}
+    .menu-btn{
+      margin-left:auto;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:none;border:1px solid rgba(255,255,255,.12);color:#fff;
+      width:42px;height:42px;border-radius:999px;
+    }
+    .mobile-nav{
+      display:none;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:12px 16px 16px;
+    }
+    .mobile-nav.show{display:block}
+    .mobile-nav button{
+      display:block;width:100%;
+      margin-top:8px;
+      text-align:left;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      padding:14px 16px;
+    }
+
+    .hero{
+      position:relative; overflow:hidden;
+      min-height:520px;
+      display:flex;align-items:center;
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 8% 28%, rgba(241,209,208,.94) 0%, rgba(241,209,208,.94) 12%, rgba(241,209,208,0) 34%),
+        radial-gradient(circle at 68% 36%, rgba(106,183,199,.55) 0%, rgba(106,183,199,.55) 12%, rgba(106,183,199,0) 34%),
+        radial-gradient(circle at 85% 38%, rgba(16,89,132,.96) 0%, rgba(16,89,132,.96) 10%, rgba(16,89,132,0) 30%),
+        linear-gradient(90deg, #faf6f2 0%, #f2efe7 42%, #e8f0ed 75%, #101010 100%);
+    }
+    .hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.56));
+    }
+    .hero-content{
+      position:relative; z-index:1;
+      width:100%;
+      padding:64px 0;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.58);
+      color:#555;
+      padding:8px 14px;
+      font-size:12px;
+      letter-spacing:.28em;
+      box-shadow:0 2px 10px rgba(0,0,0,.04);
+      backdrop-filter: blur(6px);
+    }
+    h1{
+      margin:18px 0 0;
+      font-size:44px;
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+    .hero p{
+      max-width:760px;
+      font-size:18px;
+      line-height:1.9;
+      color:#3f3f46;
+      margin:18px 0 0;
+    }
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.72);
+      color:#222;
+      padding:14px 18px;
+      font-size:14px;
+      font-weight:600;
+      box-shadow:0 2px 10px rgba(0,0,0,.04);
+    }
+    .pill:hover{transform:translateY(-1px)}
+    .pill.dark{background:#111;color:#fff;border-color:#111}
+    .pill .arrow{opacity:.8}
+
+    .grid{
+      max-width:1280px;margin:0 auto;
+      padding:24px 16px 0;
+      display:grid;
+      gap:18px;
+      grid-template-columns:1fr;
+    }
+    .card{
+      background:rgba(255,255,255,.82);
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+      backdrop-filter: blur(8px);
+    }
+    .card-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+    .icon{
+      width:44px;height:44px;border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.04);
+      display:grid;place-items:center;
+      flex:0 0 auto;
+    }
+    .card h2{margin:0;font-size:22px}
+    .sub{margin-top:4px;color:#777;font-size:13px}
+    .card p{margin:0;line-height:1.9;color:#555;font-size:14px}
+
+    .query-wrap{
+      max-width:1280px;margin:0 auto;
+      padding:18px 16px 0;
+      display:grid;gap:18px;
+      grid-template-columns:1.1fr .9fr;
+    }
+    .query-box,.status-box,.complaint-box{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+    .section-title{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px}
+    .section-title h3{margin:0;font-size:22px}
+    .section-title p{margin:4px 0 0;color:#777;font-size:13px}
+    .form-row{
+      display:grid;gap:12px;
+      grid-template-columns:1fr auto;
+    }
+    input, textarea{
+      width:100%;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:#f8f7f3;
+      padding:14px 16px;
+      outline:none;
+    }
+    input:focus,textarea:focus{border-color:rgba(0,0,0,.25)}
+    textarea{resize:vertical;min-height:140px}
+    .btn{
+      border:0;border-radius:18px;
+      background:#111;color:#fff;
+      padding:0 20px;
+      min-height:48px;
+      font-weight:600;
+    }
+    .btn:hover{background:#000}
+    .status-grid{
+      display:grid;gap:12px;
+      grid-template-columns:repeat(3,1fr);
+      margin-top:18px;
+    }
+    .status-item{
+      border-radius:20px;
+      background:#f7f7f4;
+      padding:16px;
+    }
+    .status-item .k{font-size:11px;letter-spacing:.2em;color:#aaa;text-transform:uppercase}
+    .status-item .v{margin-top:8px;font-weight:700}
+    .footer{
+      margin-top:28px;
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.6);
+    }
+    .footer .inner{max-width:1280px;margin:0 auto;padding:18px 16px;color:#777;font-size:13px}
+
+    .modal{
+      position:fixed;inset:0;z-index:60;
+      display:none;align-items:center;justify-content:center;
+      padding:16px;
+    }
+    .modal.show{display:flex}
+    .backdrop{
+      position:absolute;inset:0;background:rgba(0,0,0,.58);backdrop-filter:blur(10px);
+    }
+    .dialog{
+      position:relative;z-index:1;
+      width:min(680px,100%);
+      background:#111;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:28px;
+      padding:24px;
+      box-shadow:0 25px 80px rgba(0,0,0,.35);
+    }
+    .dialog-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+    .dialog h3{margin:0;font-size:28px}
+    .dialog .meta{font-size:11px;letter-spacing:.35em;color:rgba(255,255,255,.45);margin-bottom:6px}
+    .close{
+      width:38px;height:38px;border-radius:999px;
+      background:transparent;border:1px solid rgba(255,255,255,.1);color:#fff;
+    }
+    .dialog p{margin:16px 0 0;line-height:1.9;color:rgba(255,255,255,.82);font-size:15px}
+
+    .toast{
+      position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+      z-index:70;
+      display:none;
+      max-width:min(92vw,720px);
+      background:#fff;
+      color:#222;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:14px 18px;
+      box-shadow:0 18px 50px rgba(0,0,0,.14);
+      font-size:14px;
+    }
+    .toast.show{display:block}
+
+    .status-page{
+      display:none;
+      min-height:100vh;
+      background:#f4f4f1;
+      color:#111;
+    }
+    .status-page.show{display:block}
+    .status-shell{
+      max-width:1024px;margin:0 auto;padding:40px 16px 60px;
+    }
+    .status-panel{
+      background:#fff;border:1px solid var(--line);border-radius:32px;
+      padding:32px;box-shadow:0 20px 70px rgba(0,0,0,.06)
+    }
+    .badge{
+      display:inline-flex;
+      border:1px solid var(--line);
+      background:#f4f4f1;
+      color:#666;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:12px;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+    }
+    .status-page h2{margin:14px 0 0;font-size:44px;line-height:1.08}
+    .status-page .desc{margin-top:16px;color:#666;line-height:1.9;font-size:16px;max-width:780px}
+    .status-grid2{
+      display:grid;gap:12px;margin-top:22px;grid-template-columns:repeat(3,1fr)
+    }
+    .status-grid2 .item{
+      background:#f7f7f4;border-radius:20px;padding:16px
+    }
+    .status-grid2 .item .k{font-size:11px;letter-spacing:.2em;color:#aaa;text-transform:uppercase}
+    .status-grid2 .item .v{margin-top:8px;font-weight:700}
+
+    @media (min-width: 900px){
+      nav.desktop{display:flex}
+      .menu-btn{display:none}
+      .grid{grid-template-columns:repeat(3,1fr)}
+      .status-page h2{font-size:52px}
+    }
+    @media (max-width: 899px){
+      .query-wrap{grid-template-columns:1fr}
+      .status-grid,.status-grid2{grid-template-columns:1fr}
+      h1{font-size:34px}
+      .hero{min-height:460px}
+      .hero p{font-size:16px}
+      .form-row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap inner">
+      <button class="brand" id="goHome">
+        <div class="brand-mark">◎</div>
+        <div>
+          <div class="brand-title">O.E全球唯一官方网站</div>
+          <div class="brand-sub">O.E Global Official Website</div>
+        </div>
+      </button>
+      <nav class="desktop">
+        <button data-open="about">关于O.E</button>
+        <button data-open="team">专业团队</button>
+        <button data-open="news">新闻资讯</button>
+        <button data-scroll="#query-panel">事务节点查询</button>
+        <button data-scroll="#complaint-panel">投诉意见</button>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="菜单">☰</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <button data-open="about">关于O.E</button>
+      <button data-open="team">专业团队</button>
+      <button data-open="news">新闻资讯</button>
+      <button data-scroll="#query-panel">事务节点查询</button>
+      <button data-scroll="#complaint-panel">投诉意见</button>
+    </div>
+  </header>
+
+  <div id="homePage">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="wrap hero-content">
+        <div class="eyebrow">O.E Global Official Website</div>
+        <h1>O.E全球唯一官方网站</h1>
+        <p>立足中国，连接全球。</p>
+        <div class="actions">
+          <button class="pill" data-open="about">关于O.E <span class="arrow">→</span></button>
+          <button class="pill" data-open="team">专业团队 <span class="arrow">→</span></button>
+          <button class="pill" data-open="news">新闻资讯 <span class="arrow">→</span></button>
+          <button class="pill" data-scroll="#query-panel">事务节点查询 <span class="arrow">→</span></button>
+          <button class="pill dark" data-scroll="#complaint-panel">投诉意见 <span class="arrow">→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">i</div>
+          <div><h2>关于O.E</h2><div class="sub">点击即可打开介绍</div></div>
+        </div>
+        <p>O.E是全国唯一认证的雨中诗·雪中花。页面采用简洁留白与深色导航，参考示意图的克制排版与柔和背景层次。</p>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">✦</div>
+          <div><h2>专业团队</h2><div class="sub">角色信息展示</div></div>
+        </div>
+        <p>章诗瑶 · 超模角色，相关信息尚未完善。</p>
+      </article>
+      <article class="card">
+        <div class="card-head">
+          <div class="icon">≋</div>
+          <div><h2>新闻资讯</h2><div class="sub">后续更新入口</div></div>
+        </div>
+        <p>当前仅保留基础入口，后续可扩展为新闻列表、公告页与图文详情页。</p>
+      </article>
+    </section>
+
+    <section class="query-wrap" id="query-panel">
+      <div class="query-box">
+        <div class="section-title">
+          <div class="icon">⌕</div>
+          <div>
+            <h3>事务节点查询</h3>
+            <p>输入姓名后查询事务状态。</p>
+          </div>
+        </div>
+        <div class="form-row">
+          <input id="queryName" placeholder="输入姓名" />
+          <button class="btn" id="queryBtn">查询</button>
+        </div>
+        
+      </div>
+      <div class="status-box">
+        <div class="section-title">
+          <div class="icon">⛨</div>
+          <div>
+            <h3>事务状态</h3>
+            <p>显示当前节点状态。</p>
+          </div>
+        </div>
+        <div style="background:#f7f7f4;border-radius:20px;padding:20px">
+          <div style="font-size:11px;letter-spacing:.28em;color:#aaa;text-transform:uppercase">Current</div>
+          <div style="margin-top:8px;font-size:26px;font-weight:700">正在审阅</div>
+          <p style="margin-top:12px;line-height:1.8;color:#666">该区域会在跳转后的新界面中完整展示事务详情。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="query-wrap" id="complaint-panel" style="padding-bottom:40px">
+      <div class="complaint-box" style="grid-column:1/-1">
+        <div class="section-title">
+          <div class="icon">✎</div>
+          <div>
+            <h3>投诉意见</h3>
+            <p>请输入您的意见，提交后会弹出提示。</p>
+          </div>
+        </div>
+        <form id="complaintForm">
+          <textarea id="complaintText" placeholder="请输入您的意见"></textarea>
+          <div style="margin-top:12px">
+            <button class="btn" type="submit">提交</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="inner">© <span id="year"></span> O.E全球唯一官方网站</div>
+    </footer>
+  </div>
+
+  <div class="status-page" id="statusPage">
+    <header class="topbar" style="position:sticky;top:0">
+      <div class="wrap inner">
+        <button class="brand" id="backHome">
+          <div class="brand-mark">◎</div>
+          <div>
+            <div class="brand-title">O.E全球唯一官方网站</div>
+            <div class="brand-sub">OFFICIAL STATUS</div>
+          </div>
+        </button>
+        <button class="btn" id="backBtn" style="margin-left:auto">返回首页</button>
+      </div>
+    </header>
+    <div class="status-shell">
+      <div class="status-panel">
+        <div class="badge">事务节点查询结果</div>
+        <h2 id="statusName">姚遥</h2>
+        <div class="desc">事务状态：正在审阅。</div>
+        <div class="status-grid2">
+          <div class="item"><div class="k">节点一</div><div class="v">资料已接收</div></div>
+          <div class="item"><div class="k">节点二</div><div class="v">正在审阅</div></div>
+          <div class="item"><div class="k">节点三</div><div class="v">等待下一步通知</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="backdrop" id="backdrop"></div>
+    <div class="dialog">
+      <div class="dialog-top">
+        <div>
+          <div class="meta">O.E GLOBAL</div>
+          <h3 id="modalTitle">O.E</h3>
+        </div>
+        <button class="close" id="closeModal">✕</button>
+      </div>
+      <p id="modalBody"></p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const toast = document.getElementById('toast');
+    const homePage = document.getElementById('homePage');
+    const statusPage = document.getElementById('statusPage');
+    const statusName = document.getElementById('statusName');
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    const copy = {
+      about: { title: 'O.E介绍', body: 'O.E是全国唯一认证的雨中诗·雪中花。' },
+      team: { title: '专业团队', body: '章诗瑶 · 超模角色，相关信息尚未完善。' },
+      news: { title: '新闻资讯', body: '敬请期待。这里将用于发布 O.E 官方资讯、公告与更新。' }
+    };
+
+    function showModal(key){
+      const item = copy[key];
+      if(!item) return;
+      modalTitle.textContent = item.title;
+      modalBody.textContent = item.body;
+      modal.classList.add('show');
+    }
+    function hideModal(){ modal.classList.remove('show'); }
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+    function scrollToSel(sel){
+      document.querySelector(sel)?.scrollIntoView({behavior:'smooth', block:'start'});
+      document.getElementById('mobileNav').classList.remove('show');
+    }
+    function openStatus(name){
+      statusName.textContent = name;
+      homePage.style.display = 'none';
+      statusPage.classList.add('show');
+      window.scrollTo(0,0);
+    }
+    function backHome(){
+      statusPage.classList.remove('show');
+      homePage.style.display = 'block';
+      window.scrollTo(0,0);
+    }
+
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.toggle('show');
+    });
+    document.querySelectorAll('[data-open]').forEach(btn => btn.addEventListener('click', () => showModal(btn.dataset.open)));
+    document.querySelectorAll('[data-scroll]').forEach(btn => btn.addEventListener('click', () => scrollToSel(btn.dataset.scroll)));
+    document.getElementById('closeModal').addEventListener('click', hideModal);
+    document.getElementById('backdrop').addEventListener('click', hideModal);
+    document.getElementById('goHome').addEventListener('click', () => {
+      if(statusPage.classList.contains('show')) backHome();
+      else window.scrollTo(0,0);
+    });
+    document.getElementById('backHome').addEventListener('click', backHome);
+    document.getElementById('backBtn').addEventListener('click', backHome);
+
+    document.getElementById('queryBtn').addEventListener('click', () => {
+      const name = document.getElementById('queryName').value.trim();
+      if(name === '姚遥'){
+        openStatus(name);
+      }else{
+        showToast('尚未查询到事务内容');
+      }
+    });
+
+    document.getElementById('complaintForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('收到您的投诉，稍后将有专人负责枪毙您。');
+      document.getElementById('complaintText').value = '';
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){
+        hideModal();
+      }
+    });
+  </script>
+</body>
+</html>
