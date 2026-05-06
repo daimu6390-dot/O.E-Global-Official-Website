@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新闻资讯 - O.E</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:#f3f1ec;
+      color:#171717;
+    }
+
+    .topbar{
+      background:#111;
+      color:#fff;
+      padding:14px 16px;
+      display:flex;
+      justify-content:space-between;
+    }
+
+    .wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:20px;
+    }
+
+    h1{font-size:36px;margin:20px 0}
+
+    .card{
+      background:#fff;
+      border-radius:20px;
+      padding:20px;
+      margin-top:20px;
+    }
+
+    .back{
+      cursor:pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>O.E全球唯一官方网站</div>
+  <div class="back" onclick="goBack()">返回</div>
+</header>
+
+<div class="wrap">
+  <h1>新闻资讯</h1>
+
+  <div class="card">
+    <h2>这里是标题</h2>
+    <p>这里是正文内容，你可以随便改。</p>
+  </div>
+
+</div>
+
+<script>
+function goBack(){
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
