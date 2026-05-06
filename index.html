@@ -1,124 +1,86 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>O.E全球唯一官方网站</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O.E全球唯一官方网站</title>
+  <style>
+    :root{
+      --bg:#f3f1ec;
+      --card:#ffffff;
+      --text:#171717;
+      --muted:#666;
+      --line:rgba(0,0,0,.1);
+      --dark:#111;
+      --accent:#f59e0b;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    button{cursor:pointer}
 
-<!-- ⚠️ 样式100%保留你的原版 -->
-<style>
-/* ====== 原CSS完全保留（未删减） ====== */
-:root{
---bg:#f3f1ec;
---card:#ffffff;
---text:#171717;
---muted:#666;
---line:rgba(0,0,0,.1);
---dark:#111;
---accent:#f59e0b;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei";background:var(--bg);color:var(--text)}
-.topbar{position:sticky;top:0;z-index:40;background:rgba(17,17,17,.97);color:#fff;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px)}
-.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
-.topbar .inner{display:flex;align-items:center;gap:16px;min-height:64px}
-.brand{display:flex;align-items:center;gap:12px;background:none;border:0;color:#fff}
-.brand-mark{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;border:1px solid rgba(245,158,11,.35);background:rgba(245,158,11,.1);color:var(--accent)}
-.brand-title{font-size:14px;font-weight:700}
-.brand-sub{font-size:11px;color:rgba(255,255,255,.4)}
-nav.desktop{margin-left:auto;display:flex;gap:30px}
-nav.desktop button{background:none;border:0;color:#fff}
-.hero{position:relative;min-height:520px;display:flex;align-items:center}
-.hero-bg{position:absolute;inset:0;background:
-radial-gradient(circle at 8% 28%, rgba(241,209,208,.94) 0%, transparent 34%),
-radial-gradient(circle at 68% 36%, rgba(106,183,199,.55) 0%, transparent 34%),
-radial-gradient(circle at 85% 38%, rgba(16,89,132,.96) 0%, transparent 30%),
-linear-gradient(90deg,#faf6f2,#e8f0ed,#101010)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.56))}
-.hero-content{position:relative;padding:64px}
-.grid{max-width:1280px;margin:0 auto;padding:24px 16px}
-.card{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:32px;padding:24px;cursor:pointer}
-.status-page{display:none}
-.status-page.show{display:block}
-.status-shell{max-width:1024px;margin:0 auto;padding:40px}
-.status-panel{background:#fff;border-radius:32px;padding:32px}
-</style>
+    .topbar{
+      position:sticky;top:0;z-index:40;
+      background:rgba(17,17,17,.97);
+      color:#fff;
+      padding:14px 16px;
+    }
+
+    .wrap{max-width:1280px;margin:0 auto}
+
+    .hero{
+      padding:80px 16px;
+    }
+
+    h1{font-size:42px;margin:0}
+    p{color:#555}
+
+    .actions{margin-top:20px}
+    .pill{
+      margin-right:10px;
+      padding:10px 16px;
+      border-radius:20px;
+      border:1px solid #ddd;
+      background:#fff;
+    }
+
+    .card{
+      background:#fff;
+      border-radius:20px;
+      padding:20px;
+      margin:20px;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- 顶部 -->
 <header class="topbar">
-<div class="wrap inner">
-<button class="brand" onclick="backHome()">O.E全球唯一官方网站</button>
-<nav class="desktop">
-<button onclick="alert('O.E是全国唯一认证的雨中诗·雪中花。')">关于O.E</button>
-<button onclick="alert('章诗瑶 · 超模角色')">专业团队</button>
-<button onclick="backHome()">新闻资讯</button>
-</nav>
-</div>
+  O.E全球唯一官方网站
 </header>
 
-<!-- 首页 -->
-<div id="homePage">
+<section class="hero wrap">
+  <h1>O.E全球唯一官方网站</h1>
+  <p>立足中国，连接全球。</p>
 
-<section class="hero">
-<div class="hero-bg"></div>
-<div class="hero-overlay"></div>
-<div class="hero-content">
-<h1>O.E全球唯一官方网站</h1>
-</div>
+  <div class="actions">
+    <button class="pill" onclick="openNewsPage()">新闻资讯</button>
+  </div>
 </section>
 
-<!-- ✅ 只保留新闻 -->
-<section class="grid">
-<div class="card" onclick="openNews()">
-<h2>新闻资讯</h2>
-<p>O.E与D.A举行双边函电对话 双方就实现休战达成重要共识</p>
-</div>
-</section>
-
-</div>
-
-<!-- 新闻页面 -->
-<div class="status-page" id="newsPage">
-<div class="status-shell">
-<div class="status-panel">
-
-<h2>O.E与D.A举行双边函电对话 双方就实现休战达成重要共识</h2>
-
-<p>
-【本报讯】2026年5月4日，O.E与D.A通过电子邮件形式举行了双边对话。双方就缓解当前紧张局势、维护关系和平稳定进行了坦诚、深入的意见交换。
-<br><br>
-对话中，双方经过友好协商，正式就达成休战协议达成原则共识。双方一致认为，停止战斗是符合双方根本利益的唯一正确选择。
-<br><br>
-据悉，D.A在对话中对其此前的挑衅行为进行了深刻反思，并向O.E表达了正式致歉。D.A明确表示，愿为改善双边关系采取建设性步骤，确保此类事件不再发生。
-<br><br>
-O.E对D.A展现出的积极姿态表示认可，并强调双方应以此次休战共识为契机，进一步加强沟通协调，切实履行相关承诺，共同推动双边关系重回健康稳定发展的轨道。
-<br><br>
-双方将继续保持各层级沟通，为构建持久和平与安全环境共同努力。
-</p>
-
-<br>
-<button onclick="backHome()">返回首页</button>
-
-</div>
-</div>
+<div class="card wrap">
+  <h2>关于O.E</h2>
+  <p>O.E是全国唯一认证的雨中诗·雪中花。</p>
 </div>
 
 <script>
-const homePage = document.getElementById('homePage');
-const newsPage = document.getElementById('newsPage');
-
-function openNews(){
-homePage.style.display='none';
-newsPage.classList.add('show');
-}
-
-function backHome(){
-newsPage.classList.remove('show');
-homePage.style.display='block';
+function openNewsPage(){
+  window.location.href = "news.html";
 }
 </script>
 
