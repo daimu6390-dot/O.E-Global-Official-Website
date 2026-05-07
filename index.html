@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -16,12 +16,12 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
     button,input,textarea{font:inherit}
     button{cursor:pointer}
     .topbar{
@@ -29,6 +29,7 @@ body{
       background:rgba(17,17,17,.97);
       color:#fff;
       border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
     }
     .wrap{max-width:1280px;margin:0 auto;padding:0 16px}
     .topbar .inner{
@@ -77,23 +78,21 @@ body{
 
     .hero{
       position:relative; overflow:hidden;
-      min-height:100vh;
+      min-height:520px;
       display:flex;align-items:center;
     }
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:var(--bg);
-}
-
+    .hero-bg{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 8% 28%, rgba(241,209,208,.94) 0%, rgba(241,209,208,.94) 12%, rgba(241,209,208,0) 34%),
+        radial-gradient(circle at 68% 36%, rgba(106,183,199,.55) 0%, rgba(106,183,199,.55) 12%, rgba(106,183,199,0) 34%),
+        radial-gradient(circle at 85% 38%, rgba(16,89,132,.96) 0%, rgba(16,89,132,.96) 10%, rgba(16,89,132,0) 30%),
+        linear-gradient(90deg, #faf6f2 0%, #f2efe7 42%, #e8f0ed 75%, #101010 100%);
+    }
     .hero-overlay{
       position:absolute;inset:0;
-      background:linear-gradient(
-  180deg,
-  rgba(255,255,255,.04),
-  rgba(255,255,255,.12)
-);
-}
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.56));
+    }
     .hero-content{
       position:relative; z-index:1;
       width:100%;
@@ -103,7 +102,7 @@ body{
       display:inline-flex;align-items:center;
       border-radius:999px;
       border:1px solid var(--line);
-      background:#ffffff;
+      background:rgba(255,255,255,.58);
       color:#555;
       padding:8px 14px;
       font-size:12px;
@@ -129,7 +128,7 @@ body{
       display:inline-flex;align-items:center;gap:10px;
       border-radius:999px;
       border:1px solid var(--line);
-      background:#ffffff;
+      background:rgba(255,255,255,.72);
       color:#222;
       padding:14px 18px;
       font-size:14px;
@@ -148,7 +147,7 @@ body{
       grid-template-columns:1fr;
     }
     .card{
-      background:#ffffff;
+      background:rgba(255,255,255,.82);
       border:1px solid var(--line);
       border-radius:32px;
       padding:24px;
@@ -490,7 +489,7 @@ body{
       </div>
     </section>
 
-    <footer class="footer" style="display:none">
+    <footer class="footer">
       <div class="inner">© <span id="year"></span> O.E全球唯一官方网站</div>
     </footer>
   </div>
@@ -573,7 +572,7 @@ style="margin-left:auto"
 </button>
 
 </div>
-  <div class="status-shell">
+  <div class="status-shell" style="display:none">
     <div class="status-panel">
       <div class="badge">新闻资讯</div>
 
@@ -622,7 +621,7 @@ style="margin-left:auto"
     </div>
   </header>
 
-  <div class="status-shell">
+  <div class="status-shell" style="display:none">
     <div class="status-panel">
 
       <div class="badge">新闻正文</div>
@@ -671,7 +670,8 @@ style="margin-left:auto"
 
     const copy = {
       about: { title: 'O.E介绍', body: 'O.E是全国唯一认证的雨中诗·雪中花。' },
-      team: { title: '专业团队', body: '章诗瑶 · 超模角色，相关信息尚未完善。' }
+      team: { title: '专业团队', body: '章诗瑶 · 超模角色，相关信息尚未完善。' },
+      news: { title: '新闻资讯', body: '敬请期待。这里将用于发布 O.E 官方资讯、公告与更新。' }
     };
 
     function showModal(key){
@@ -757,6 +757,11 @@ function backNewsList(){
 }
 
 document.getElementById('newsBackBtn').addEventListener('click', () => {
+  document.getElementById('newsPage').classList.remove('show');
+  homePage.style.display = 'block';
+});
+
+document.getElementById('backHomeFromNews').addEventListener('click', () => {
   document.getElementById('newsPage').classList.remove('show');
   homePage.style.display = 'block';
 });
