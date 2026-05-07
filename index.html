@@ -16,12 +16,24 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
+   body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f8efee 0%,
+      #f3f0eb 34%,
+      #eef3f1 58%,
+      #d9e7ea 76%,
+      #355d7a 100%
+    );
+
+  background-attachment:fixed;
+
+  color:var(--text);
+}
     button,input,textarea{font:inherit}
     button{cursor:pointer}
     .topbar{
@@ -119,11 +131,11 @@
 
   filter: saturate(105%);
 }
-    }
-    .hero-overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.56));
-    }
+   .hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.06);
+}
     .hero-content{
       position:relative; z-index:1;
       width:100%;
@@ -247,11 +259,11 @@
     }
     .status-item .k{font-size:11px;letter-spacing:.2em;color:#aaa;text-transform:uppercase}
     .status-item .v{margin-top:8px;font-weight:700}
-    .footer{
-      margin-top:28px;
-      border-top:1px solid var(--line);
-      background:rgba(255,255,255,.6);
-    }
+   .footer{
+  margin-top:28px;
+  border-top:1px solid rgba(255,255,255,.18);
+  background:transparent;
+}
     .footer .inner{max-width:1280px;margin:0 auto;padding:18px 16px;color:#777;font-size:13px}
 
     .modal{
@@ -298,11 +310,11 @@
     .toast.show{display:block}
 
     .status-page{
-      display:none;
-      min-height:100vh;
-      background:#f4f4f1;
-      color:#111;
-    }
+  display:none;
+  min-height:100vh;
+  background:transparent;
+  color:#111;
+}
     .status-page.show{display:block}
     .status-shell{
       max-width:1024px;margin:0 auto;padding:40px 16px 60px;
