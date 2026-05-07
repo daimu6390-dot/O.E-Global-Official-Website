@@ -485,6 +485,109 @@
 
   <div class="toast" id="toast"></div>
 
+  <!-- 新闻列表页 -->
+<div class="status-page" id="newsPage">
+  <header class="topbar" style="position:sticky;top:0">
+    <div class="wrap inner">
+      <button class="brand" id="backHomeFromNews">
+        <div class="brand-mark">◎</div>
+        <div>
+          <div class="brand-title">O.E全球唯一官方网站</div>
+          <div class="brand-sub">NEWS CENTER</div>
+        </div>
+      </button>
+
+      <button class="btn" id="newsBackBtn" style="margin-left:auto">
+        返回首页
+      </button>
+    </div>
+  </header>
+
+  <div class="status-shell">
+    <div class="status-panel">
+      <div class="badge">新闻资讯</div>
+
+      <div
+        onclick="openNewsArticle()"
+        style="
+          margin-top:24px;
+          padding:24px;
+          border-radius:24px;
+          background:#f7f7f4;
+          cursor:pointer;
+          transition:.2s;
+        "
+      >
+        <div style="font-size:12px;color:#999;letter-spacing:.2em">
+          2026 · 05 · 04
+        </div>
+
+        <div style="margin-top:10px;font-size:26px;font-weight:700;line-height:1.5">
+          O.E与D.A举行双边函电对话 双方就实现休战达成重要共识
+        </div>
+
+        <div style="margin-top:14px;color:#666;line-height:1.9">
+          O.E与D.A通过电子邮件形式举行双边对话，双方就缓解当前紧张局势进行了深入交流。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 新闻正文页 -->
+<div class="status-page" id="newsArticlePage">
+  <header class="topbar" style="position:sticky;top:0">
+    <div class="wrap inner">
+      <button class="brand" id="backNewsList">
+        <div class="brand-mark">◎</div>
+        <div>
+          <div class="brand-title">O.E全球唯一官方网站</div>
+          <div class="brand-sub">NEWS ARTICLE</div>
+        </div>
+      </button>
+
+      <button class="btn" id="articleBackBtn" style="margin-left:auto">
+        返回列表
+      </button>
+    </div>
+  </header>
+
+  <div class="status-shell">
+    <div class="status-panel">
+
+      <div class="badge">新闻正文</div>
+
+      <h2 style="margin-top:20px;line-height:1.4">
+        O.E与D.A举行双边函电对话 双方就实现休战达成重要共识
+      </h2>
+
+      <div style="margin-top:10px;color:#999;font-size:14px">
+        发布日期：2026年5月4日
+      </div>
+
+      <div
+        style="
+          margin-top:28px;
+          color:#555;
+          line-height:2.1;
+          font-size:16px;
+        "
+      >
+        <p>【本报讯】2026年5月4日，O.E与D.A通过电子邮件形式举行了双边对话。双方就缓解当前紧张局势、维护关系和平稳定进行了坦诚、深入的意见交换。</p>
+
+        <p>对话中，双方经过友好协商，正式就达成休战协议达成原则共识。双方一致认为，停止战斗是符合双方根本利益的唯一正确选择。</p>
+
+        <p>据悉，D.A在对话中对其此前的挑衅行为进行了深刻反思，并向O.E表达了正式致歉。D.A明确表示，愿为改善双边关系采取建设性步骤，确保此类事件不再发生。</p>
+
+        <p>O.E对D.A展现出的积极姿态表示认可，并强调双方应以此次休战共识为契机，进一步加强沟通协调，切实履行相关承诺，共同推动双边关系重回健康稳定发展的轨道。</p>
+
+        <p>双方将继续保持各层级沟通，为构建持久和平与安全环境共同努力。</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+  
   <script>
     const modal = document.getElementById('modal');
     const modalTitle = document.getElementById('modalTitle');
@@ -535,7 +638,18 @@
     document.getElementById('menuBtn').addEventListener('click', () => {
       document.getElementById('mobileNav').classList.toggle('show');
     });
-    document.querySelectorAll('[data-open]').forEach(btn => btn.addEventListener('click', () => showModal(btn.dataset.open)));
+    document.querySelectorAll('[data-open]').forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    if(btn.dataset.open === 'news'){
+      homePage.style.display = 'none';
+      document.getElementById('newsPage').classList.add('show');
+      return;
+    }
+
+    showModal(btn.dataset.open);
+  });
+});
     document.querySelectorAll('[data-scroll]').forEach(btn => btn.addEventListener('click', () => scrollToSel(btn.dataset.scroll)));
     document.getElementById('closeModal').addEventListener('click', hideModal);
     document.getElementById('backdrop').addEventListener('click', hideModal);
@@ -561,6 +675,31 @@
       document.getElementById('complaintText').value = '';
     });
 
+    function openNewsArticle(){
+  document.getElementById('newsPage').classList.remove('show');
+  document.getElementById('newsArticlePage').classList.add('show');
+  window.scrollTo(0,0);
+}
+
+function backNewsList(){
+  document.getElementById('newsArticlePage').classList.remove('show');
+  document.getElementById('newsPage').classList.add('show');
+  window.scrollTo(0,0);
+}
+
+document.getElementById('newsBackBtn').addEventListener('click', () => {
+  document.getElementById('newsPage').classList.remove('show');
+  homePage.style.display = 'block';
+});
+
+document.getElementById('backHomeFromNews').addEventListener('click', () => {
+  document.getElementById('newsPage').classList.remove('show');
+  homePage.style.display = 'block';
+});
+
+document.getElementById('articleBackBtn').addEventListener('click', backNewsList);
+
+document.getElementById('backNewsList').addEventListener('click', backNewsList);
     document.addEventListener('keydown', (e) => {
       if(e.key === 'Escape'){
         hideModal();
