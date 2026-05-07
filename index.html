@@ -6,7 +6,7 @@
   <title>O.E全球唯一官方网站</title>
   <style>
     :root{
-      --bg:#f3f1ec;
+      --bg:#f6f2ee;
       --card:#ffffff;
       --text:#171717;
       --muted:#666;
@@ -96,45 +96,62 @@
 .hero-bg{
   position:absolute;
   inset:0;
+  overflow:hidden;
 
   background:
+
     radial-gradient(
-      circle at 12% 32%,
-      rgba(241,209,208,.95) 0%,
-      rgba(241,209,208,.72) 18%,
-      rgba(241,209,208,0) 42%
+      circle at 16% 38%,
+      rgba(244,214,214,.98) 0%,
+      rgba(244,214,214,.82) 20%,
+      rgba(244,214,214,.38) 42%,
+      rgba(244,214,214,0) 68%
     ),
 
     radial-gradient(
-      circle at 72% 38%,
-      rgba(122,190,198,.42) 0%,
-      rgba(122,190,198,.26) 22%,
-      rgba(122,190,198,0) 48%
+      circle at 74% 36%,
+      rgba(126,205,225,.62) 0%,
+      rgba(126,205,225,.34) 24%,
+      rgba(126,205,225,.12) 42%,
+      rgba(126,205,225,0) 66%
     ),
 
     radial-gradient(
-      circle at 88% 42%,
-      rgba(22,82,120,.92) 0%,
-      rgba(22,82,120,.72) 24%,
-      rgba(22,82,120,.18) 52%,
-      rgba(22,82,120,0) 72%
+      circle at 102% 42%
+      rgba(20,64,102,.98) 0%,
+      rgba(20,64,102,.88) 16%,
+      rgba(20,64,102,.52) 34%,
+      rgba(20,64,102,.16) 58%,
+      rgba(20,64,102,0) 78%
     ),
 
-    linear-gradient(
-      90deg,
-      #f8efee 0%,
-      #f3f0eb 34%,
-      #eef3f1 58%,
-      #d9e7ea 76%,
-      #355d7a 100%
-    );
+    radial-gradient(
+      circle at 56% 50%,
+      rgba(255,255,255,.96) 0%,
+      rgba(255,255,255,.90) 24%,
+      rgba(255,255,255,.58) 48%,
+      rgba(255,255,255,.12) 68%,
+      rgba(255,255,255,0) 82%
+    ),
 
-  filter: saturate(105%);
+    #f6f2ee;
+
+  filter:
+    saturate(112%)
+    blur(0px);
+
+  transform:scale(1.02);
 }
    .hero-overlay{
   position:absolute;
   inset:0;
-  background:rgba(255,255,255,.06);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.02),
+      rgba(255,255,255,.14)
+    );
 }
     .hero-content{
       position:relative; z-index:1;
@@ -311,7 +328,7 @@
 
     .status-page{
   display:none;
-  min-height:100vh;
+  min-height:108vh;
   background:transparent;
   color:#111;
 }
