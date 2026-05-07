@@ -87,7 +87,7 @@
         radial-gradient(circle at 8% 28%, rgba(241,209,208,.94) 0%, rgba(241,209,208,.94) 12%, rgba(241,209,208,0) 34%),
         radial-gradient(circle at 68% 36%, rgba(106,183,199,.55) 0%, rgba(106,183,199,.55) 12%, rgba(106,183,199,0) 34%),
         radial-gradient(circle at 85% 38%, rgba(16,89,132,.96) 0%, rgba(16,89,132,.96) 10%, rgba(16,89,132,0) 30%),
-        linear-gradient(90deg, #faf6f2 0%, #f2efe7 42%, #e8f0ed 75%, #101010 100%);
+        linear-gradient(90deg, #faf6f2 0%, #f2efe7 42%, #e8f0ed 75%,  #c9dce8 100%);
     }
     .hero-overlay{
       position:absolute;inset:0;
@@ -572,7 +572,7 @@ style="margin-left:auto"
 </button>
 
 </div>
-  <div class="status-shell" style="display:none">
+  <div class="status-shell">
     <div class="status-panel">
       <div class="badge">新闻资讯</div>
 
@@ -621,7 +621,7 @@ style="margin-left:auto"
     </div>
   </header>
 
-  <div class="status-shell" style="display:none">
+  <div class="status-shell">
     <div class="status-panel">
 
       <div class="badge">新闻正文</div>
@@ -757,11 +757,6 @@ function backNewsList(){
 }
 
 document.getElementById('newsBackBtn').addEventListener('click', () => {
-  document.getElementById('newsPage').classList.remove('show');
-  homePage.style.display = 'block';
-});
-
-document.getElementById('backHomeFromNews').addEventListener('click', () => {
   document.getElementById('newsPage').classList.remove('show');
   homePage.style.display = 'block';
 });
