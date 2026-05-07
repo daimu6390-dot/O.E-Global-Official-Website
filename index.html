@@ -538,7 +538,7 @@
   <div class="toast" id="toast"></div>
 
   <!-- 新闻列表页 -->
-<div class="status-page" id="newsPage">
+<div class="status-shell">
 <div style="
 display:flex;
 gap:12px;
@@ -621,7 +621,7 @@ style="margin-left:auto"
     </div>
   </header>
 
-  <div class="status-shell" style="display:none">
+  <div class="status-shell">
     <div class="status-panel">
 
       <div class="badge">新闻正文</div>
@@ -757,11 +757,6 @@ function backNewsList(){
 }
 
 document.getElementById('newsBackBtn').addEventListener('click', () => {
-  document.getElementById('newsPage').classList.remove('show');
-  homePage.style.display = 'block';
-});
-
-document.getElementById('backHomeFromNews').addEventListener('click', () => {
   document.getElementById('newsPage').classList.remove('show');
   homePage.style.display = 'block';
 });
