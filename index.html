@@ -370,22 +370,74 @@
           <div class="icon">i</div>
           <div><h2>关于O.E</h2><div class="sub">点击即可打开介绍</div></div>
         </div>
-        <p>O.E是全国唯一认证的雨中诗·雪中花。页面采用简洁留白与深色导航，参考示意图的克制排版与柔和背景层次。</p>
+        <p>O.E是全国唯一认证的雨中诗·雪中花。</p>
       </article>
       <article class="card">
         <div class="card-head">
           <div class="icon">✦</div>
           <div><h2>专业团队</h2><div class="sub">角色信息展示</div></div>
         </div>
-        <p>章诗瑶 · 超模角色，相关信息尚未完善。</p>
+        <p>章诗瑶，超模角色，相关信息尚未完善。</p>
       </article>
-      <article class="card">
-        <div class="card-head">
-          <div class="icon">≋</div>
-          <div><h2>新闻资讯</h2><div class="sub">后续更新入口</div></div>
-        </div>
-        <p>当前仅保留基础入口，后续可扩展为新闻列表、公告页与图文详情页。</p>
-      </article>
+    <article class="card" id="homeNewsCard" style="cursor:pointer">
+  <div class="card-head">
+    <div class="icon">≋</div>
+    <div>
+      <h2>新闻资讯</h2>
+      <div class="sub">最新官方动态</div>
+    </div>
+  </div>
+
+  <div style="
+    margin-top:8px;
+    padding:18px;
+    border-radius:22px;
+    background:#f7f7f4;
+    border:1px solid rgba(0,0,0,.06);
+  ">
+    <div style="
+      font-size:12px;
+      letter-spacing:.22em;
+      color:#999;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    ">
+      Latest News
+    </div>
+
+    <div style="
+      font-size:18px;
+      line-height:1.7;
+      font-weight:700;
+      color:#111;
+    ">
+      O.E与D.A举行双边函电对话<br>
+      双方就实现休战达成重要共识
+    </div>
+
+    <div style="
+      margin-top:14px;
+      color:#666;
+      line-height:1.8;
+      font-size:14px;
+    ">
+      2026年5月4日，双方通过电子邮件形式举行双边对话，
+      就缓解当前紧张局势与维护和平稳定进行了深入沟通。
+    </div>
+
+    <div style="
+      margin-top:16px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:14px;
+      font-weight:600;
+      color:#111;
+    ">
+      点击查看全文 →
+    </div>
+  </div>
+</article>
     </section>
 
     <section class="query-wrap" id="query-panel">
@@ -487,22 +539,39 @@
 
   <!-- 新闻列表页 -->
 <div class="status-page" id="newsPage">
-  <header class="topbar" style="position:sticky;top:0">
-    <div class="wrap inner">
-      <button class="brand" id="backHomeFromNews">
-        <div class="brand-mark">◎</div>
-        <div>
-          <div class="brand-title">O.E全球唯一官方网站</div>
-          <div class="brand-sub">NEWS CENTER</div>
-        </div>
-      </button>
+<div style="
+display:flex;
+gap:12px;
+align-items:center;
+justify-content:space-between;
+padding:24px 32px 0;
+">
 
-      <button class="btn" id="newsBackBtn" style="margin-left:auto">
-        返回首页
-      </button>
-    </div>
-  </header>
+<input
+id="newsSearch"
+type="text"
+placeholder="搜索新闻关键词、日期、人物、事件..."
+style="
+flex:1;
+max-width:420px;
+padding:14px 18px;
+border:none;
+border-radius:14px;
+background:#f3f3f3;
+font-size:15px;
+outline:none;
+"
+/>
 
+<button
+id="newsBackBtn"
+class="btn"
+style="margin-left:auto"
+>
+返回首页
+</button>
+
+</div>
   <div class="status-shell">
     <div class="status-panel">
       <div class="badge">新闻资讯</div>
@@ -700,6 +769,11 @@ document.getElementById('backHomeFromNews').addEventListener('click', () => {
 document.getElementById('articleBackBtn').addEventListener('click', backNewsList);
 
 document.getElementById('backNewsList').addEventListener('click', backNewsList);
+    document.getElementById('homeNewsCard').addEventListener('click', () => {
+  homePage.style.display = 'none';
+  document.getElementById('newsPage').classList.add('show');
+  window.scrollTo(0,0);
+});
     document.addEventListener('keydown', (e) => {
       if(e.key === 'Escape'){
         hideModal();
